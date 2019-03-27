@@ -2,12 +2,12 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css';
 import '../stylesheet/App.css';
-import MainPage from '../Containers/MainPage/MainPage';
+import LandingPage from '../Containers/LandingPage/LandingPage';
 
 
 const App = () => (
   <Switch>
-    <Route path='/' component={MainPage} />
+    <Route path='/' component={LandingPage} />
   </Switch>
 )
 export default App;
