@@ -20,4 +20,4 @@ export function postData(data, endpoint) {
     .then(resdata => resdata);
 }
 
-export const HelloWorldApi = () => ({ name: 'Hello World' });
+export const HelloWorldApi = () => ({ name: 'Hello World Saga' });

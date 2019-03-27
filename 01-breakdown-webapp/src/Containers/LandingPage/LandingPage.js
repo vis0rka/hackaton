@@ -16,28 +16,34 @@ class LandingPage extends Component {
   render() {
     return (
       <div className="container-fluid bg-warning landing-wrapper">
-        <div className="mx-auto my-auto d-flex flex-column align-items-center justify-content-around h-75">
+        <div className="mx-auto my-auto d-flex flex-column align-items-center justify-content-around m-2">
           <div className="landing-heading w-50">
             <h1 className="text-center">Hackaton | Breakdown</h1>
             <p className="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum facilisis auctor nunc finibus accumsan. Aliquam elementum a nisi vitae pharetra. Aliquam erat volutpat. Fusce quis dictum dolor. Nunc vehicula dolor porta mollis egestas. Integer convallis tortor id tincidunt maximus. Etiam odio mauris, vehicula eget odio quis, commodo iaculis erat. Morbi semper egestas imperdiet. Praesent at vestibulum leo. Integer facilisis justo vitae semper finibus.</p>
           </div>
           <div className={this.state.signUp ? 'container-lg-reg' : 'container-lg-reg right-panel-active'} onClick={this.onToggle}>
             <div className="form-container sign-up-container">
-              <form action="#">
-                <h1>Create Account</h1>
-                <span>or use your email for registration</span>
-                <input type="text" placeholder="Name" />
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+              <form action="#" className="">
+                <div className="form-header">
+                  <h1>Create Account</h1>
+                </div>
+                <div className="form-inputs">
+                  <input className="form-control" type="text" placeholder="Name" />
+                  <input className="form-control" type="email" placeholder="Email" />
+                  <input className="form-control" type="password" placeholder="Password" />
+                </div>
                 <button>Sign Up</button>
               </form>
             </div>
             <div className="form-container sign-in-container">
               <form action="#">
-                <h1>Sign in</h1>
-                <span>or use your account</span>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <div className="form-header">
+                  <h1>Sign in</h1>
+                </div>
+                <div className="form-inputs">
+                  <input className="form-control" type="email" placeholder="Email" />
+                  <input className="form-control" type="password" placeholder="Password" />
+                </div>
                 <button>Sign In</button>
               </form>
             </div>
