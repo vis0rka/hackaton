@@ -17,6 +17,9 @@ p, span {
 .landing-wrapper {
   width: 100vw;
   height: 100vh;
+  background: url('https://66.media.tumblr.com/93dd503a372863110727dccc4bf1a660/tumblr_nsobx5Dd7c1qfirfao1_1280.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 button {
