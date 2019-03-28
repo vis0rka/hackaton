@@ -45,8 +45,24 @@ const deleteIncome = (req, res) => {
   }
 };
 
+const getAllIncome = (req, res) => {
+  const { userId } = req.body;
+  if (!userId) {
+    res.status(400).json({
+      status: "error",
+      message: "Missing data!"
+    });
+  } else {
+    incomseServie
+      .getAllIncome(userId)
+      .then(data => res.status(200).json(data))
+      .catch(error => res.status(500).json(error));
+  }
+};
+
 module.exports = {
   postIncome,
   updateIncome,
-  deleteIncome
+  deleteIncome,
+  getAllIncome
 };
