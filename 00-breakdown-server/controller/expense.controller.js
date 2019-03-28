@@ -2,32 +2,14 @@ const expenseService = require('../services/expenses.service');
 
 const postExpenseController = ( req, res) => {
   const { userId, amount, category } = req.body;
-  if( category === 'accomodation' || category === 'car' || category === 'family' || category === 'clothes' || category === 'food' ||
-    category === 'recreation' || category === 'healt' || category === 'pets' || category === 'household' || category === 'technologies' ||
-    category === 'travel' || category  === 'others' && amount > 0 ) {
-      expenseService.postExpense(userId, amount, category)
-        .then(() => {
-          res.status(200).json({
-            message: 'new expense added'
-          })
-        })
-        .catch(error => res.status(500).json(error));
-    } else if(!category) {
-      res.status(400).json({
-        status: 'error',
-        message: 'Missing parameter(s): category!',
-      });
-    } else if(amount < 0) {
-      res.status(400).json({
-        status: 'error',
-        message: 'Expense must be greater than 0!',
-      });
-    } else {
-      res.status(400).json({
-        status: 'error',
-        message: 'Invalid category!'
-      });
-    }
+  const budgetCategory = ['accomodation', 'car', 'family', 'clothes', 'food', 'recreation', 'health', 'bills', 'pets', 'household', 'technologies', 'travel', 'others']
+  if (!budgetCategory.includes(category) || !userId || !amount || amount <= 0) {
+    res.status(400).json({ status: 'error', message: 'You missed something or you give invalid amount' })
+  } else {
+    expenseService.postExpense(userId, category, amount)
+      .then(data => res.status(200).json(data))
+      .catch(error => res.status(500).json(error));
+  }
 }
 
 module.exports = {

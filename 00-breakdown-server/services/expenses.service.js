@@ -1,23 +1,19 @@
 const Expense = require('../models/expense');
 const User = require('../models/user');
 
-const postExpense = body => new Promise((resolve, reject) => {
-  const { userId, category, amount } = body;
-  new Expense({
-    category,
-    amount,
-  })
-    .save((error, user) => {
-      if (error) {
-        reject(error);
-      } else {
-        User.findOneAndUpdate({ _id: userId },
-          { $push: { expense: { amount: amount, category: category} } }, { new: true })
-          .then(data => resolve(data))
-          .catch(error => reject(error));
-        resolve(user);
-      }
-    });
+const postExpense = (id, category, amount) => new Promise((fullfill, reject) => {
+  const newExpense = new Expense({
+    amount: amount,
+    category: category,
+  });
+  newExpense.save();
+  User.findOneAndUpdate({ _id: id }, { $push: { expense: newExpense._id } }, (err) => {
+    if (err) {
+      reject(err);
+    } else {
+      fullfill(newExpense);
+    }
+  });
 });
 
 module.exports = {
