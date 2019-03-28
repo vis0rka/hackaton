@@ -16,9 +16,7 @@ const postDebit = ( userId, amount, date, dueDate ) => new Promise((fullfill, re
       Debit.findById(newDebit._id, (error, data) => {
         if (error) {
           reject(error);
-          console.log(error)
         } else {
-          console.log(data)
           fullfill(data);
         }
       });
@@ -44,16 +42,23 @@ const putDebit = ( debitId, amount, date, dueDate ) => new Promise((fullfill, re
     .catch(error => reject(error));
 });
 
-const deleteDebit = (debitId) => new Promise((fullfill, reject) => {
-  Debit.findOneAndDelete({ _id: debitId}, (error) => {
-    if (error) {
-      reject(error);
+const deleteDebit = (userId, debitId) => new Promise((fullfill, reject) => {
+  Debit.findOneAndDelete({ _id: debitId }, (error, data) => {
+    if (error || !data) {
+      reject({"message": "no debit found"});
     } else {
-      fullfill({
-        "message": "debit deleted",
+      User.findOneAndUpdate( { _id: userId }, { $pull: { debit: debitId } }, (err, data) => {
+        if (err || !data) {
+          reject({"message": "no user found"});
+        } else {
+          fullfill({
+            "message": "debit deleted",
+          });
+        }
       });
     }
-  });
+  })
+  .catch(error => reject(error));
 });
 
 module.exports = {

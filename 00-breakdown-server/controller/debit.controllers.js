@@ -16,8 +16,8 @@ const putDebit = (req, res) => {
 }
 
 const deleteDebit = (req, res) => {
-  const { debitId } = req.body;
-  debitService.deleteDebit(debitId)
+  const { userId, debitId } = req.body;
+  debitService.deleteDebit(userId, debitId)
   .then((message) => res.status(200).json(message))
   .catch(error => res.status(500).json(error));
 }
