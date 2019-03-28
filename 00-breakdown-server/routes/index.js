@@ -12,4 +12,6 @@ router.post('/expense', expenseController.postExpenseController);
 
 router.put('/expense', expenseController.updateExpenseController);
 
+router.delete('/expense', expenseController.deleteExpense);
+
 module.exports = router;

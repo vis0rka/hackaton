@@ -24,7 +24,23 @@ const updateExpenseController = (req, res) => {
   }
 }
 
+const deleteExpense = (req, res) => {
+  const {userId, expenseId} = req.body;
+  if(!userId || !expenseId){
+    res.status(400).json({
+      status: 'error',
+      message: 'Expense does not exist'
+    });
+  } else {
+    expenseService.deleteExpense(userId, expenseId)
+      .then(()=> res.status(200).json({status: 'ok', message: 'successfuly deleted'}))
+      .catch(error => res.status(500).json(error))
+  }
+}
+
 module.exports = {
   postExpenseController,
   updateExpenseController,
+  deleteExpense,
+
 }

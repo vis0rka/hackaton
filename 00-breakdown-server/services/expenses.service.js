@@ -16,19 +16,35 @@ const postExpense = (id, category, amount) => new Promise((fullfill, reject) => 
   });
 });
 
-const updateExpense = (id, amount, category, ) => new Promise((fullfill, reject) => {
-  Expense.findOneAndUpdate({ _id: id },
+const updateExpense = (expenseId, amount, category, ) => new Promise((fullfill, reject) => {
+  Expense.findOneAndUpdate({ _id: expenseId },
     { $set: { amount: amount, category: category } }, (err, data) => {
-      if(err || data === null) {
-        reject(err)
+      if (err || data === null) {
+        reject(err);
       } else {
-        fullfill(data)
+        fullfill(data);
       }
+    });
+});
+
+const deleteExpense = (userId, expenseId) => new Promise((fullfill, reject) => {
+  Expense.findOneAndDelete({ _id: expenseId }, (err, data) => {
+    if (err || data === null) {
+      reject(err);
+    } else {
+      User.findOneAndUpdate({ _id: userId }, { $pull: { expense: expenseId } }, (err) => {
+        if (err) {
+          reject(err);
+        } else {
+          fullfill(data);
+        }
+      });
     }
-  )
-})
+  });
+});
 
 module.exports = {
   postExpense,
   updateExpense,
+  deleteExpense,
 }
