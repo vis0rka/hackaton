@@ -1,12 +1,32 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Form from "../../Components/FormBuilder";
+import {sendDebitData} from "../../actions/actions";
 
+const fields = [
+  // { type: "text", name: "description", placeholder: "Enter a description" },
+  { type: "number", name: "amount", placeholder: "Enter an amount" }
+];
 class Debitpage extends Component {
-
   render() {
     return (
-      <h1>This is the Debitpage</h1>
-    )
+      <React.Fragment>
+        <Form fields={fields} handleSubmit={this.props.sendDebitData} />
+      </React.Fragment>
+    );
   }
 }
 
-export default Debitpage;
+const mapStateToProps = store => ({
+  // connect to store?
+});
+
+const mapDispatchToProps = {
+  sendDebitData
+  // dispatch actions
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Debitpage);
