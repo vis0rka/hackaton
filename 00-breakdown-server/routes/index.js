@@ -8,10 +8,12 @@ router.post('/register', userController.registerUser);
 
 router.post('/login', userController.userLogin);
 
-router.post('/expense', expenseController.postExpenseController);
+router.post('/expenses', expenseController.postExpenseController);
 
-router.put('/expense', expenseController.updateExpenseController);
+router.patch('/expenses', expenseController.updateExpenseController);
 
-router.delete('/expense', expenseController.deleteExpense);
+router.delete('/expenses', expenseController.deleteExpenseController);
+
+router.get('/expenses', expenseController.getAllExpenses);
 
 module.exports = router;

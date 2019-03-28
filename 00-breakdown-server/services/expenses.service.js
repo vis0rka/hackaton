@@ -43,8 +43,17 @@ const deleteExpense = (userId, expenseId) => new Promise((fullfill, reject) => {
   });
 });
 
+const getAllExpenses = userId => new Promise((fullfill, reject) => {
+  User.findById(userId)
+    .populate('expense')
+    .select('expense')
+    .exec((error, myExpenses) => (error ? reject(error) : fullfill(myExpenses.expense)))
+})
+
+
 module.exports = {
   postExpense,
   updateExpense,
   deleteExpense,
+  getAllExpenses,
 }
