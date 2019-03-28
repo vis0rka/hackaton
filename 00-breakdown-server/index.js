@@ -17,6 +17,7 @@ mongoose.connect('mongodb+srv://breakdown_team:Qawsed.123@cluster0-p0g2k.mongodb
     useNewUrlParser: true,
     useCreateIndex: true,
   });
+mongoose.set('useFindAndModify', false);
 
 app.use(express.json());
 
