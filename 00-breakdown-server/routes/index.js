@@ -8,8 +8,6 @@ router.post("/register", userController.registerUser);
 
 router.post("/login", userController.userLogin);
 
-// income
-
 router.post("/income", incomeComtroller.postIncome);
 
 router.put("/income", incomeComtroller.updateIncome);
