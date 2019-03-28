@@ -52,6 +52,12 @@ const userReducer = (
         errMessage: null,
       }
     }
+    case 'USER_LOGIN_STATUS_CLEAR': {
+      return {
+        ...state,
+        isLogdin:false,
+      }
+    }
     default:
       return state
   }
