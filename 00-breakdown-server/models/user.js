@@ -2,8 +2,12 @@ require('dotenv').config();
 
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-
 const crypto = require('crypto');
+
+require('./budget');
+require('./debit');
+require('./expense');
+require('./income');
 
 const User = new Schema({
   username: {
@@ -15,6 +19,26 @@ const User = new Schema({
     type: String,
     required: true,
   },
+  income: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Income',
+    default: [],
+  }],
+  expense: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Expense',
+    default: [],
+  }],
+  budget: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Budget',
+    default: [],
+  }],
+  debit: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Debit',
+    default: [],
+  }],
 });
 
 User.methods.setPassword = function setPassword(password) {
