@@ -19,11 +19,11 @@ router.delete("/income", incomeComtroller.deleteIncome);
 
 router.get("/income", incomeComtroller.getAllIncome);
 
-router.post("/postDebit", debitController.postDebit);
+router.post("/debit", debitController.postDebit);
 
-router.put("/putDebit", debitController.putDebit);
+router.put("/debit", debitController.putDebit);
 
-router.delete("/deleteDebit", debitController.deleteDebit);
+router.delete("/debit", debitController.deleteDebit);
 
 router.get("/allaboutuser", userController.getAllAboutUser);
 
