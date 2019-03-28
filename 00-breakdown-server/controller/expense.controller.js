@@ -6,7 +6,7 @@ const postExpenseController = ( req, res) => {
     category === 'recreation' || category === 'healt' || category === 'pets' || category === 'household' || category === 'technologies' ||
     category === 'travel' || category  === 'others' && amount > 0 ) {
       expenseService.postExpense(userId, amount, category)
-        .then((user) => {
+        .then(() => {
           res.status(200).json({
             message: 'new expense added'
           })
@@ -28,7 +28,7 @@ const postExpenseController = ( req, res) => {
         message: 'Invalid category!'
       });
     }
-};
+}
 
 module.exports = {
   postExpenseController,
