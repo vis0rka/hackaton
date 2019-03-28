@@ -25,22 +25,22 @@ const putBudget = (req, res) => {
 };
 
 const deleteBudget = (req, res) => {
-  const { budgetId } = req.body;
-  if (!budgetId) {
+  const { userId, budgetId } = req.body;
+  if (!budgetId || !userId) {
     res.status(400).json({ status: 'error', message: 'You made a mistake :(' })
   } else {
-    budgetService.deleteBudget(budgetId)
+    budgetService.deleteBudget(userId,budgetId)
       .then(data => res.status(200).json(data))
       .catch(error => res.status(500).json(error));
   }
 };
 
-const getBudget = (req, res) => {
-  const { budgetId } = req.body;
-  if (!budgetId) {
+const getAllBudget = (req, res) => {
+  const { userId } = req.body;
+  if (!userId) {
     res.status(400).json({ status: 'error', message: 'You made a mistake :(' })
   } else {
-    budgetService.deleteBudget(budgetId)
+    budgetService.getAllBudget(userId)
       .then(data => res.status(200).json(data))
       .catch(error => res.status(500).json(error));
   }
@@ -50,5 +50,5 @@ module.exports = {
   postBudget,
   putBudget,
   deleteBudget,
-  getBudget,
+  getAllBudget,
 };

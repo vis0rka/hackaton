@@ -24,7 +24,7 @@ router.put('/budget', budgetController.putBudget);
 
 router.delete('/budget', budgetController.deleteBudget);
 
-router.get('/budget', budgetController.getBudget);
+router.get('/budget', budgetController.getAllBudget);
 
 
 module.exports = router;
