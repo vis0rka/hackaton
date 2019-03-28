@@ -66,9 +66,33 @@ function* login(action) {
   }
 }
 
+function* getUserInfo(action) {
+  try {
+    const response = yield call(API.postData, action.payload, 'http://localhost:4000/allaboutuser');
+    console.log(response)
+    if (response.message) {
+      yield put({
+        type: 'GET_USER_INFO_FAILED',
+        payload: response.message,
+      });
+    } else {
+      yield put({
+        type: 'GET_USER_INFO_SUCCEEDED',
+        payload: response,
+      });
+    }
+  } catch (error) {
+    yield put({
+      type: 'GET_USER_INFO_FAILED',
+    });
+    console.log(error); // eslint-disable-line
+  }
+}
+
 export default function* rootSaga() {
   yield takeEvery('HELLO_WORLD_REQUESTED', sayHelloSaga);
   yield takeEvery('HELLO_WORLD_SAGA_REQUESTED', HelloSaga);
   yield takeEvery('USER_REG_REQUESTED', register);
-  yield takeEvery('USER_LOGIN_REQUESTED', login)
+  yield takeEvery('USER_LOGIN_REQUESTED', login);
+  yield takeEvery('GET_ALL_USER_INFO_REQUESTED', getUserInfo)
 }

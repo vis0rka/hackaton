@@ -16,7 +16,7 @@ class Navbar extends Component {
 
   render() {
     return (
-      <nav class="main-menu" >
+      <nav className="main-menu" >
         <ul>
           <li>
             <button data-name="home" onClick={this.handleClick}>
@@ -45,7 +45,7 @@ class Navbar extends Component {
           <li className="has-subnav">
             <button  data-name="budget" onClick={this.handleClick}>
               <i className="fa fa-folder-open fa-2x"><FontAwesomeIcon icon="align-left"/></i>
-              <span class="nav-text">
+              <span className="nav-text">
                 Budgets
               </span>
             </button>

@@ -1,11 +1,3 @@
-export const getHelloWorld = () => ({
-  type: 'HELLO_WORLD_REQUESTED',
-});
-
-export const getHelloWorldSaga = () => ({
-  type: 'HELLO_WORLD_SAGA_REQUESTED',
-});
-
 export const sendUserLogin = (username, password) => ({
   type: 'USER_LOGIN_REQUESTED',
   payload: {
@@ -28,4 +20,11 @@ export const clearErrorMessage = () => ({
 
 export const clearLoginStatus = () => ({
   type: 'USER_LOGIN_STATUS_CLEAR'
+})
+
+export const getAllUserInfo = (userId) => ({
+  type: 'GET_ALL_USER_INFO_REQUESTED',
+  payload: {
+    userId
+  }
 })
