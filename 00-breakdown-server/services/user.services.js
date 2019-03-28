@@ -25,6 +25,16 @@ const getUser = username => new Promise((fullfill, reject) => {
   });
 });
 
+const getUserById = userId => new Promise((fullfill, reject) => {
+  User.findById({ _id: userId }, (error, user) => {
+    if (error) {
+      reject(error);
+    } else {
+      fullfill(user);
+    }
+  })
+});
+
 const getAllUserinfo = userId => new Promise((fullfill, reject) => {
   User.findById(userId)
   .populate('income expense budget debit')
@@ -36,4 +46,5 @@ module.exports = {
   postUser,
   getUser,
   getAllUserinfo,
+  getUserById,
 };
