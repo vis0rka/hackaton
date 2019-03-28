@@ -194,12 +194,33 @@ p, span {
     transform: translateX(20%);
 }
 
-.main-wrapper {
+.wrapperers {
+  position: relative;
   width: 100vw;
   min-height: 100vh;
   height: auto;
-  background: url('https://images.unsplash.com/3/www.madebyvadim.com.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1522&q=80');
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-bottom: 2%;
+  z-index: 5;
+}
+
+.icons {
+  width:70px;
+}
+
+#bg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+}
+
+#bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
 }

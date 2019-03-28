@@ -12,12 +12,15 @@ class MainPage extends Component {
     return (
       <div className="main-wrapper">
         <Navbar />
-        <div className="container w-75 d-flex justify-content-center p-3">
+        <div className="container w-75 d-flex justify-content-center p-3 wrapperers">
           <Route path="/mainpage/home" component={HomePage}/>
           <Route path="/mainpage/income" component={IncomePage}/>
           <Route path="/mainpage/expense" component={Expensepage}/>
           <Route path="/mainpage/budget" component={Budgetpage}/>
           <Route path="/mainpage/debit" component={Debitpage}/>
+        </div>
+        <div id="bg">
+          <img src="https://images.unsplash.com/3/www.madebyvadim.com.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1522&q=80"></img>
         </div>
       </div>
     );
