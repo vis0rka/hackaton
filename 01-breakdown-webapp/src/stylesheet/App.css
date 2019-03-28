@@ -24,7 +24,7 @@ p, span {
   padding-bottom: 2%;
 }
 
-button {
+.container-lg-reg button {
   border-radius: 20px;
   border: 1px solid #ff4b2b;
   background-color: #ff4b2b;
@@ -37,15 +37,15 @@ button {
   transition: transform 80ms ease-in;
 }
 
-button:active {
+.container-lg-reg button:active {
   transform: scale(0.95);
 }
 
-button:focus {
+.container-lg-reg button:focus {
   outline: none;
 }
 
-button.ghost {
+.container-lg-reg button.ghost {
   background-color: transparent;
   border-color: #ffffff;
 }
@@ -192,4 +192,14 @@ button.ghost {
 
 .container-lg-reg.right-panel-active .overlay-right {
     transform: translateX(20%);
+}
+
+.main-wrapper {
+  width: 100vw;
+  min-height: 100vh;
+  height: auto;
+  background: url('https://images.unsplash.com/3/www.madebyvadim.com.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1522&q=80');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 2%;
 }

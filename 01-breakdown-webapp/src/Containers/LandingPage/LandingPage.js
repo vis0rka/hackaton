@@ -13,7 +13,7 @@ class LandingPage extends Component {
 
   componentWillUpdate(nextProps) {
     if (nextProps.isLogdin) {
-      this.props.history.push('/mainpage/');
+      this.props.history.push('/mainpage/home');
     }
   }
 
