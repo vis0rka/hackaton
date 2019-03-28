@@ -13,6 +13,17 @@ class LandingPage extends Component {
     }
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    if (event.target.classList.contains('signUp')) {
+      const { regName, regPassword, regEmail } = event.target.elements;
+      console.log(regName.value, regPassword.value, regEmail.value);
+    } else if (event.target.classList.contains('signIn')) {
+      const { logEmail, logPassword } = event.target.elements;
+      console.log(logEmail.value, logPassword.value)
+    }
+  }
+
   render() {
     return (
       <div className="container-fluid bg-warning landing-wrapper">
@@ -23,28 +34,28 @@ class LandingPage extends Component {
           </div>
           <div className={this.state.signUp ? 'container-lg-reg' : 'container-lg-reg right-panel-active'} onClick={this.onToggle}>
             <div className="form-container sign-up-container">
-              <form action="#" className="">
+              <form onSubmit={this.handleSubmit} className="signUp">
                 <div className="form-header">
                   <h1>Create Account</h1>
                 </div>
                 <div className="form-inputs">
-                  <input className="form-control" type="text" placeholder="Name" />
-                  <input className="form-control" type="email" placeholder="Email" />
-                  <input className="form-control" type="password" placeholder="Password" />
+                  <input className="form-control" type="text" placeholder="Name" id="regName" />
+                  <input className="form-control" type="email" placeholder="Email" id="regEmail" />
+                  <input className="form-control" type="password" placeholder="Password" id="regPassword" />
                 </div>
-                <button>Sign Up</button>
+                <button type="submit">Sign Up</button>
               </form>
             </div>
             <div className="form-container sign-in-container">
-              <form action="#">
+              <form onSubmit={this.handleSubmit} className="signIn">
                 <div className="form-header">
                   <h1>Sign in</h1>
                 </div>
                 <div className="form-inputs">
-                  <input className="form-control" type="email" placeholder="Email" />
-                  <input className="form-control" type="password" placeholder="Password" />
+                  <input className="form-control" type="email" placeholder="Email" id="logEmail" />
+                  <input className="form-control" type="password" placeholder="Password" id="logPassword" />
                 </div>
-                <button>Sign In</button>
+                <button type="submit">Sign In</button>
               </form>
             </div>
             <div className="overlay-container">

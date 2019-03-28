@@ -12,7 +12,7 @@ app.use(cors());
 
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://breakdown_team:Qawsed.123@cluster0-p0g2k.mongodb.net/foxypedia?retryWrites=true',
+mongoose.connect('mongodb+srv://breakdown_team:Qawsed.123@cluster0-p0g2k.mongodb.net/budgetapp?retryWrites=true',
   {
     useNewUrlParser: true,
     useCreateIndex: true,
