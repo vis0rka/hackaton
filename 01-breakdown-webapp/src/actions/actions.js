@@ -25,3 +25,7 @@ export const sendUserRegister = (username, password) => ({
 export const clearErrorMessage = () => ({
   type: 'USER_ERROR_MESSAGE_CLEAR'
 })
+
+export const clearLoginStatus = () => ({
+  type: 'USER_LOGIN_STATUS_CLEAR'
+})

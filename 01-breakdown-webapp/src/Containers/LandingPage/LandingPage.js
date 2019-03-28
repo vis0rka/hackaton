@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { sendUserLogin, sendUserRegister, clearErrorMessage } from '../../actions/actions';
+import { sendUserLogin, sendUserRegister, clearErrorMessage, clearLoginStatus } from '../../actions/actions';
 
 class LandingPage extends Component {
   state = {
     signUp: false,
+  }
+
+  componentDidMount = () => {
+    this.props.clearLoginStatus();
   }
 
   componentWillUpdate(nextProps) {
@@ -23,10 +27,10 @@ class LandingPage extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    if (event.target.classList.contains('signUp')) {
+    if (event.target.classList.contains('signUpForm')) {
       const { regName, regPassword } = event.target.elements;
       this.props.sendUserRegister(regName.value, regPassword.value);
-    } else if (event.target.classList.contains('signIn')) {
+    } else if (event.target.classList.contains('signInForm')) {
       const { logName, logPassword } = event.target.elements;
       this.props.sendUserLogin(logName.value, logPassword.value);
     }
@@ -42,12 +46,12 @@ class LandingPage extends Component {
       <div className="container-fluid bg-warning landing-wrapper">
         <div className="mx-auto my-auto d-flex flex-column align-items-center justify-content-around m-2">
           <div className="landing-heading w-50 mt-4">
-            <h1 className="text-center">Hackaton | Breakdown</h1>
-            <p className="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum facilisis auctor nunc finibus accumsan. Aliquam elementum a nisi vitae pharetra. Aliquam erat volutpat. Fusce quis dictum dolor. Nunc vehicula dolor porta mollis egestas. Integer convallis tortor id tincidunt maximus. Etiam odio mauris, vehicula eget odio quis, commodo iaculis erat. Morbi semper egestas imperdiet. Praesent at vestibulum leo. Integer facilisis justo vitae semper finibus.</p>
+            <h1 className="text-center text-light">My second wallet</h1>
+            <p className="text-center text-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum facilisis auctor nunc finibus accumsan. Aliquam elementum a nisi vitae pharetra. Aliquam erat volutpat. Fusce quis dictum dolor. Nunc vehicula dolor porta mollis egestas. Integer convallis tortor id tincidunt maximus. Etiam odio mauris, vehicula eget odio quis, commodo iaculis erat. Morbi semper egestas imperdiet. Praesent at vestibulum leo. Integer facilisis justo vitae semper finibus.</p>
           </div>
           <div className={this.state.signUp ? 'container-lg-reg' : 'container-lg-reg right-panel-active'} onClick={this.onToggle}>
             <div className="form-container sign-up-container">
-              <form onSubmit={this.handleSubmit} className="signUp">
+              <form onSubmit={this.handleSubmit} className="signUpForm">
                 <div className="form-header">
                   <h1>Create Account</h1>
                 </div>
@@ -60,7 +64,7 @@ class LandingPage extends Component {
               </form>
             </div>
             <div className="form-container sign-in-container">
-              <form onSubmit={this.handleSubmit} className="signIn">
+              <form onSubmit={this.handleSubmit} className="signInForm">
                 <div className="form-header">
                   <h1>Sign in</h1>
                 </div>
@@ -105,6 +109,7 @@ const mapDispatchToProps = {
   sendUserLogin,
   sendUserRegister,
   clearErrorMessage,
+  clearLoginStatus,
 };
 
 export default connect(
