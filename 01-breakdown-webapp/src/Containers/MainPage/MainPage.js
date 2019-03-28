@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getHelloWorld, getHelloWorldSaga } from '../../actions/actions';
 import Navbar from '../Navbar/Navbar';
 import { Route } from 'react-router-dom';
 import HomePage from '../HomePage/Homepage';
@@ -9,12 +8,6 @@ import Expensepage from '../Expensepage/Expensepage';
 import Budgetpage from '../Budgetpage/Budgetpage';
 import Debitpage from '../Debitpage/Debitpage';
 class MainPage extends Component {
-  componentDidMount() {
-    const { getHelloWorld, getHelloWorldSaga } = this.props;
-    getHelloWorld();
-    getHelloWorldSaga();
-  }
-
   render() {
     return (
       <div className="main-wrapper">
@@ -38,8 +31,7 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = {
-  getHelloWorld,
-  getHelloWorldSaga,
+
 };
 
 export default connect(
