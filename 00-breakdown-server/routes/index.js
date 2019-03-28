@@ -10,4 +10,6 @@ router.post('/login', userController.userLogin);
 
 router.post('/expense', expenseController.postExpenseController);
 
+router.put('/expense', expenseController.updateExpenseController);
+
 module.exports = router;

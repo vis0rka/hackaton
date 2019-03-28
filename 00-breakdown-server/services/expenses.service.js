@@ -16,6 +16,19 @@ const postExpense = (id, category, amount) => new Promise((fullfill, reject) => 
   });
 });
 
+const updateExpense = (id, amount, category, ) => new Promise((fullfill, reject) => {
+  Expense.findOneAndUpdate({ _id: id },
+    { $set: { amount: amount, category: category } }, (err, data) => {
+      if(err || data === null) {
+        reject(err)
+      } else {
+        fullfill(data)
+      }
+    }
+  )
+})
+
 module.exports = {
   postExpense,
+  updateExpense,
 }
