@@ -1,0 +1,54 @@
+const budgetService = require('../services/budget.services')
+
+const postBudget = (req, res) => {
+  const { userId, category, maxValue } = req.body;
+  const budgetCategory = ['accomodation', 'car', 'family', 'clothes', 'food', 'recreation', 'health', 'bills', 'pets', 'household', 'technologies', 'travel', 'others']
+  if (!budgetCategory.includes(category) || !userId || !maxValue) {
+    res.status(400).json({ status: 'error', message: 'You missed something' })
+  } else {
+    budgetService.addBudget(userId, category, maxValue)
+      .then(data => res.status(200).json(data))
+      .catch(error => res.status(500).json(error));
+  }
+};
+
+const putBudget = (req, res) => {
+  const { budgetId, category, maxValue } = req.body;
+  const budgetCategory = ['accomodation', 'car', 'family', 'clothes', 'food', 'recreation', 'health', 'bills', 'pets', 'household', 'technologies', 'travel', 'others']
+  if (!budgetCategory.includes(category) || !category || !maxValue) {
+    res.status(400).json({ status: 'error', message: 'You missed something' })
+  } else {
+    budgetService.modifyBudget(budgetId, category, maxValue)
+      .then(data => res.status(200).json(data))
+      .catch(error => res.status(500).json(error));
+  }
+};
+
+const deleteBudget = (req, res) => {
+  const { budgetId } = req.body;
+  if (!budgetId) {
+    res.status(400).json({ status: 'error', message: 'You missed something' })
+  } else {
+    budgetService.deleteBudget(budgetId)
+      .then(data => res.status(200).json(data))
+      .catch(error => res.status(500).json(error));
+  }
+};
+
+const getBudget = (req, res) => {
+  const { budgetId } = req.body;
+  if (!budgetId) {
+    res.status(400).json({ status: 'error', message: 'You missed something' })
+  } else {
+    budgetService.deleteBudget(budgetId)
+      .then(data => res.status(200).json(data))
+      .catch(error => res.status(500).json(error));
+  }
+};
+
+module.exports = {
+  postBudget,
+  putBudget,
+  deleteBudget,
+  getBudget,
+};
