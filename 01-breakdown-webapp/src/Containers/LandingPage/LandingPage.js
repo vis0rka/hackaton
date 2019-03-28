@@ -17,7 +17,7 @@ class LandingPage extends Component {
     return (
       <div className="container-fluid bg-warning landing-wrapper">
         <div className="mx-auto my-auto d-flex flex-column align-items-center justify-content-around m-2">
-          <div className="landing-heading w-50">
+          <div className="landing-heading w-50 mt-4">
             <h1 className="text-center">Hackaton | Breakdown</h1>
             <p className="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum facilisis auctor nunc finibus accumsan. Aliquam elementum a nisi vitae pharetra. Aliquam erat volutpat. Fusce quis dictum dolor. Nunc vehicula dolor porta mollis egestas. Integer convallis tortor id tincidunt maximus. Etiam odio mauris, vehicula eget odio quis, commodo iaculis erat. Morbi semper egestas imperdiet. Praesent at vestibulum leo. Integer facilisis justo vitae semper finibus.</p>
           </div>
