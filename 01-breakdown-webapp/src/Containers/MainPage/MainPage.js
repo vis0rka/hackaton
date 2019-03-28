@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getHelloWorld, getHelloWorldSaga } from '../../actions/actions';
-
+import Navbar from '../Navbar/Navbar';
+import { Route } from 'react-router-dom';
+import HomePage from '../HomePage/Homepage';
+import IncomePage from '../IncomePage/Incomepage';
+import Expensepage from '../Expensepage/Expensepage';
+import Budgetpage from '../Budgetpage/Budgetpage';
+import Debitpage from '../Debitpage/Debitpage';
 class MainPage extends Component {
   componentDidMount() {
     const { getHelloWorld, getHelloWorldSaga } = this.props;
@@ -10,19 +16,16 @@ class MainPage extends Component {
   }
 
   render() {
-    const { helloWorldRedux, helloWorldSaga } = this.props;
     return (
-      <div>
-        {helloWorldRedux ? (
-          <div>
-            <p>Redux action: {helloWorldRedux}</p>
-          </div>
-        ) : null
-        }
-        {!helloWorldSaga ? (
-          <p>...loading</p>
-        ) : <p>Saga action: {helloWorldSaga}</p>
-        }
+      <div className="main-wrapper">
+        <Navbar />
+        <div className="container w-75 d-flex justify-content-center p-3">
+          <Route path="/mainpage/home" component={HomePage}/>
+          <Route path="/mainpage/income" component={IncomePage}/>
+          <Route path="/mainpage/expense" component={Expensepage}/>
+          <Route path="/mainpage/budget" component={Budgetpage}/>
+          <Route path="/mainpage/debit" component={Debitpage}/>
+        </div>
       </div>
     );
   }
