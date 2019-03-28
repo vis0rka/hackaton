@@ -71,8 +71,20 @@ const deleteIncome = (userId, incomeId) =>
     });
   });
 
+const getAllIncome = userId =>
+  new Promise((resolve, reject) => {
+    User.findById(userId, (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data.income);
+      }
+    });
+  });
+
 module.exports = {
   addNewIncome,
   updateIncome,
-  deleteIncome
+  deleteIncome,
+  getAllIncome
 };
