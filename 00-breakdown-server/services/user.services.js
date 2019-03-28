@@ -25,7 +25,17 @@ const getUser = username => new Promise((fullfill, reject) => {
   });
 });
 
+const getUserById = userId => new Promise((fullfill, reject) => {
+  User.findById({ _id: userId }, (error, user) => {
+    if (error) {
+      reject(error);
+    } else {
+      fullfill(user);
+    }
+  })
+})
 module.exports = {
   postUser,
   getUser,
+  getUserById,
 };
