@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Form from "../../Components/FormBuilder";
 import {sendExpense} from "../../actions/actions";
+import Card from '../../Components/Card/card';
 
 const values = [
   "accomodation",
@@ -29,10 +30,16 @@ const fields = [
   }
 ];
 class Expensepage extends Component {
+
   render() {
     return (
       <React.Fragment>
+        <div className="col-md-8">
         <Form fields={fields} handleSubmit={this.props.sendExpense} />
+        </div>
+        <div className="col-md-4">
+          
+        </div>
       </React.Fragment>
     );
   }
