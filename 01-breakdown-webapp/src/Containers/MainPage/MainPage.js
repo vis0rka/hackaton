@@ -20,7 +20,7 @@ class MainPage extends Component {
           <Route path="/mainpage/debit" component={Debitpage}/>
         </div>
         <div id="bg">
-          <img src="https://images.unsplash.com/3/www.madebyvadim.com.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1522&q=80"></img>
+          <img src="https://images.unsplash.com/3/www.madebyvadim.com.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1522&q=80" alt="icons"></img>
         </div>
       </div>
     );
