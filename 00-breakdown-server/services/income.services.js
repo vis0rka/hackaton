@@ -1,9 +1,9 @@
 const User = require("../models/user");
 const Income = require("../models/income");
 
-const addNewIncome = (userId, amount) =>
+const addNewIncome = (userId, amount, description) =>
   new Promise((resolve, reject) => {
-    new Income({ amount }).save((error, newIncomeEntry) => {
+    new Income({ amount, description }).save((error, newIncomeEntry) => {
       if (error) {
         reject({
           error,
