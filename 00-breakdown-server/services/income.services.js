@@ -1,9 +1,9 @@
 const User = require("../models/user");
 const Income = require("../models/income");
 
-const addNewIncome = (userId, amount) =>
+const addNewIncome = (userId, amount, description) =>
   new Promise((resolve, reject) => {
-    new Income({ amount }).save((error, newIncomeEntry) => {
+    new Income({ amount, description }).save((error, newIncomeEntry) => {
       if (error) {
         reject({
           error,
@@ -71,8 +71,20 @@ const deleteIncome = (userId, incomeId) =>
     });
   });
 
+const getAllIncome = userId =>
+  new Promise((resolve, reject) => {
+    User.findById(userId, (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data.income);
+      }
+    });
+  });
+
 module.exports = {
   addNewIncome,
   updateIncome,
-  deleteIncome
+  deleteIncome,
+  getAllIncome
 };

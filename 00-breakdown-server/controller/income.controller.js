@@ -1,7 +1,7 @@
 const incomseServie = require("../services/income.services");
 
 const postIncome = (req, res) => {
-  const { userId, amount } = req.body;
+  const { userId, amount, description  } = req.body;
   if (!userId || !amount) {
     res.status(400).json({
       status: "error",
@@ -9,7 +9,7 @@ const postIncome = (req, res) => {
     });
   } else {
     incomseServie
-      .addNewIncome(userId, amount)
+      .addNewIncome(userId, amount, description)
       .then(data => res.status(200).json(data))
       .catch(error => res.status(500).json(error));
   }
@@ -45,8 +45,24 @@ const deleteIncome = (req, res) => {
   }
 };
 
+const getAllIncome = (req, res) => {
+  const { userId } = req.body;
+  if (!userId) {
+    res.status(400).json({
+      status: "error",
+      message: "Missing data!"
+    });
+  } else {
+    incomseServie
+      .getAllIncome(userId)
+      .then(data => res.status(200).json(data))
+      .catch(error => res.status(500).json(error));
+  }
+};
+
 module.exports = {
   postIncome,
   updateIncome,
-  deleteIncome
+  deleteIncome,
+  getAllIncome
 };

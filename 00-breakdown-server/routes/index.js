@@ -2,11 +2,10 @@ const express = require("express");
 const router = express.Router();
 
 const incomeComtroller = require("../controller/income.controller");
-const userController = require('../controller/user.contoller');
-const expenseController = require('../controller/expense.controller');
-const debitController = require('../controller/debit.controllers');
-const budgetController = require('../controller/budget.controller');
-
+const userController = require("../controller/user.contoller");
+const expenseController = require("../controller/expense.controller");
+const debitController = require("../controller/debit.controllers");
+const budgetController = require("../controller/budget.controller");
 
 router.post("/register", userController.registerUser);
 
@@ -18,28 +17,30 @@ router.put("/income", incomeComtroller.updateIncome);
 
 router.delete("/income", incomeComtroller.deleteIncome);
 
-router.post('/postDebit', debitController.postDebit);
+router.get("/income", incomeComtroller.getAllIncome);
 
-router.put('/putDebit', debitController.putDebit);
+router.post("/debit", debitController.postDebit);
 
-router.delete('/deleteDebit', debitController.deleteDebit);
+router.put("/debit", debitController.putDebit);
 
-router.get('/allaboutuser', userController.getAllAboutUser);
+router.delete("/debit", debitController.deleteDebit);
 
-router.post('/budget', budgetController.postBudget);
+router.get("/allaboutuser", userController.getAllAboutUser);
 
-router.put('/budget', budgetController.putBudget);
+router.post("/budget", budgetController.postBudget);
 
-router.delete('/budget', budgetController.deleteBudget);
+router.put("/budget", budgetController.putBudget);
 
-router.get('/budget', budgetController.getAllBudget);
+router.delete("/budget", budgetController.deleteBudget);
 
-router.post('/expenses', expenseController.postExpenseController);
+router.get("/budget", budgetController.getAllBudget);
 
-router.put('/expenses', expenseController.updateExpenseController);
+router.post("/expenses", expenseController.postExpenseController);
 
-router.delete('/expenses', expenseController.deleteExpenseController);
+router.put("/expenses", expenseController.updateExpenseController);
 
-router.get('/expenses', expenseController.getAllExpenses);
+router.delete("/expenses", expenseController.deleteExpenseController);
+
+router.get("/expenses", expenseController.getAllExpenses);
 
 module.exports = router;
