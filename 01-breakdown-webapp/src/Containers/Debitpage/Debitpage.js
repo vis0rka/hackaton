@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Form from "../../Components/FormBuilder";
-import {sendDebitData} from "../../actions/actions";
-import DatePicker from "react-datepicker";
+import {sendDebit} from "../../actions/actions";
 
 const fields = [
   // { type: "text", name: "description", placeholder: "Enter a description" },
@@ -13,7 +12,7 @@ class Debitpage extends Component {
   render() {
     return (
       <React.Fragment>
-        <Form fields={fields} handleSubmit={this.props.sendDebitData} />
+        <Form fields={fields} handleSubmit={this.props.sendDebit} />
       </React.Fragment>
     );
   }
@@ -24,7 +23,7 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = {
-  sendDebitData
+  sendDebit
   // dispatch actions
 };
 
