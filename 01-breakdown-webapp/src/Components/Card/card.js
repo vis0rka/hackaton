@@ -3,6 +3,7 @@ import './card.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Card = ({img, title, category, amount, date}) => (
+  <div className="card-wrapper">
   <div className="card">
     <div className="card-img-top">
       <img src={img} name={category} alt="kep"/>
@@ -25,6 +26,7 @@ const Card = ({img, title, category, amount, date}) => (
       </button>
       </div>
     </div>
+  </div>
   </div>
 )
 

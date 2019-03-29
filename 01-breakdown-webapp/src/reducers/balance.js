@@ -80,6 +80,13 @@ const userBalance = (
         budget: [...state.budget, action.budget]
       }
     }
+    case 'DELETE_EXPENSE': {
+      console.log("reducer", action);
+      return {
+        ...state,
+        expense: [...state.expense, action.expense]
+      }
+    }
 
     default:
       return state
