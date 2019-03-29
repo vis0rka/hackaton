@@ -1,11 +1,13 @@
+import _ from "lodash";
+
 const userBalance = (
   state = {
     isError: false,
     errMessage: '',
-    income: null,
-    expense: null,
-    budget: null,
-    debit: null,
+    income: [],
+    expense: [],
+    budget: [],
+    debit: [],
     sumIncome: null,
     sumExpense: null,
     balance: null,
@@ -36,6 +38,35 @@ const userBalance = (
         errMessage: action.payload,
       }
     }
+    case 'SAVE_DEBIT_SUCCEEDED': {
+      console.log("reducer", action);
+      return {
+        ...state,
+        debit: [...state.debit, action.debit]
+      }
+    }
+    case 'SAVE_INCOME_SUCCEEDED': {
+      console.log("reducer", action);
+      return {
+        ...state,
+        income: [...state.income, action.income]
+      }
+    }
+    case 'SAVE_EXPENSE_SUCCEEDED': {
+      console.log("reducer", action);
+      return {
+        ...state,
+        expense: [...state.expense, action.expense]
+      }
+    }
+    case 'SAVE_BUDGET_SUCCEEDED': {
+      console.log("reducer", action);
+      return {
+        ...state,
+        budget: [...state.budget, action.budget]
+      }
+    }
+
     default:
       return state
   }
