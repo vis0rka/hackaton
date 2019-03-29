@@ -2,11 +2,13 @@ const Debit = require('../models/debit');
 const User = require('../models/user');
 
 
-const postDebit = ( userId, amount, date, dueDate ) => new Promise((fullfill, reject) => {
+const postDebit = ( userId, amount
+  // , date, dueDate 
+  ) => new Promise((fullfill, reject) => {
   const newDebit = new Debit({
     amount: amount,
-    date: date, 
-    dueDate: dueDate,
+    // date: date, 
+    // dueDate: dueDate,
   });
   newDebit.save();
   User.findOneAndUpdate({ _id: userId }, { $push: { debit: newDebit._id } }, (err, data) => {
