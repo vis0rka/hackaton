@@ -52,7 +52,7 @@ class FormBuilder extends Component {
                   <option
                     value={item.value}
                     key={`key-${item.value}`}
-                    // style={{ textTransform: "capitalize" }}
+                  // style={{ textTransform: "capitalize" }}
                   >
                     {item.label}
                   </option>
@@ -83,38 +83,34 @@ class FormBuilder extends Component {
   };
 
   render = () => {
-    const { userBalance } = this.props;
+    const { userSumIncome, userSumExpense, userSumDebit } = this.props;
+    const userBalance = userSumIncome - (userSumExpense + userSumDebit);
     return (
-        <form
-          style={{
-            background: "rgba(0,0,0,0.3)",
-            padding: "40px",
-            width: "600px"
-          }}
-          onSubmit={this.handleSubmit}
-        >
-          <h4 style={{color: "white"}}> { this.props.title } </h4><br/>
-          <h5 style={{color: "white"}}> User balance: { userBalance  ? (`${userBalance} HUF`): "0 HUF" }</h5><br/>
+      <form
+        style={{
+          background: "rgba(0,0,0,0.3)",
+          padding: "40px",
+          width: "600px"
+        }}
+        onSubmit={this.handleSubmit}
+      >
+        <h4 style={{ color: "white" }}> {this.props.title} </h4><br />
+        <h5 style={{ color: "white" }}> User balance: {userBalance ? (`${userBalance} HUF`) : "0 HUF"}</h5><br />
 
-          {_.map(this.props.fields, field => this.getFields(field))}
-          <button type="submit" className="btn btn-primary">
-            Submit
+        {_.map(this.props.fields, field => this.getFields(field))}
+        <button type="submit" className="btn btn-primary">
+          Submit
           </button>
-        </form>
+      </form>
     );
   };
 }
 
-const mapStateToProps = store => {
-  const userBalance = store.userBalance.balance;
-  console.log("income:", store.userBalance.income);
-  console.log("expense:", store.userBalance.expense);
-  console.log("budget:", store.userBalance.budget);
-  console.log("debit:", store.userBalance.debit);
-  return {
-    userBalance
-  };
-};
+const mapStateToProps = store => ({
+  userSumIncome: store.userBalance.sumIncome,
+  userSumExpense: store.userBalance.sumExpense,
+  userSumDebit: store.userBalance.sumDebit,
+});
 
 
 const mapDispatchToProps = {

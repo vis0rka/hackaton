@@ -35,7 +35,6 @@ class Homepage extends Component {
   pieCalculator = () => {
     const sumExpense = this.props.userSumExpense + this.props.userSumDebit
     const ratio = Math.floor((sumExpense / this.props.userSumIncome) * 100)
-    console.log(ratio)
     return  {
       income: (100 - ratio),
       ratio: ratio

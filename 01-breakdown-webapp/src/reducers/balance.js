@@ -60,21 +60,24 @@ const userBalance = (
       console.log("reducer", action);
       return {
         ...state,
-        debit: [...state.debit, action.debit]
+        debit: [...state.debit, action.debit],
+        sumDebit: state.sumDebit + action.debit.amount,
       }
     }
     case 'SAVE_INCOME_SUCCEEDED': {
       console.log("reducer", action);
       return {
         ...state,
-        income: [...state.income, action.income]
+        income: [...state.income, action.income],
+        sumIncome: state.sumIncome + action.income.amount,
       }
     }
     case 'SAVE_EXPENSE_SUCCEEDED': {
       console.log("reducer", action);
       return {
         ...state,
-        expense: [...state.expense, action.expense]
+        expense: [...state.expense, action.expense],
+        sumExpense: state.sumExpense + action.expense.amount,
       }
     }
     case 'SAVE_BUDGET_SUCCEEDED': {
