@@ -1,11 +1,15 @@
+import { stat } from "fs";
+import _ from "lodash";
+
+
 const userBalance = (
   state = {
     isError: false,
     errMessage: '',
-    income: null,
-    expense: null,
-    budget: null,
-    debit: null,
+    income: [],
+    expense: [],
+    budget: [],
+    debit: [],
     sumIncome: null,
     sumExpense: null,
     balance: null,
@@ -14,12 +18,24 @@ const userBalance = (
 ) => {
   switch (action.type) {
     case 'GET_USER_INFO_SUCCEEDED': {
-      console.log(action.payload.income)
       return {
         ...state,
         income: action.payload.income,
         expense: action.payload.expense,
-        budget: action.payload.budget,
+        budget: action.payload.budget.map(item => {
+          let temp = {
+            _id: item._id,
+            maxValue: item.maxValue,
+            category: item.category,
+            balance: item.maxValue,
+          }
+          action.payload.expense.forEach(element => {
+            if (item.category == element.category) {
+              temp.balance -= element.amount
+            } 
+          })
+          return temp
+        }),
         debit: action.payload.debit,
         sumIncome: action.payload.income.reduce(function (sum, item) {
           return sum + item.amount;
@@ -36,6 +52,35 @@ const userBalance = (
         errMessage: action.payload,
       }
     }
+    case 'SAVE_DEBIT_SUCCEEDED': {
+      console.log("reducer", action);
+      return {
+        ...state,
+        debit: [...state.debit, action.debit]
+      }
+    }
+    case 'SAVE_INCOME_SUCCEEDED': {
+      console.log("reducer", action);
+      return {
+        ...state,
+        income: [...state.income, action.income]
+      }
+    }
+    case 'SAVE_EXPENSE_SUCCEEDED': {
+      console.log("reducer", action);
+      return {
+        ...state,
+        expense: [...state.expense, action.expense]
+      }
+    }
+    case 'SAVE_BUDGET_SUCCEEDED': {
+      console.log("reducer", action);
+      return {
+        ...state,
+        budget: [...state.budget, action.budget]
+      }
+    }
+
     default:
       return state
   }

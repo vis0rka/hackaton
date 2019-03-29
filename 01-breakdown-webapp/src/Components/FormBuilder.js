@@ -8,17 +8,6 @@ class FormBuilder extends Component {
   getFields = (field, value) => {
     const { type, name, placeholder, items, label } = field;
     switch (type) {
-      // case "date":{
-      //   return (
-      //     <div>
-      //       <DatePicker
-      //         dateFormat="yyyy/MM/dd"
-      //         selected={new Date()}
-      //         onChange={this.handleChange}   
-      //       />
-      //     </div>
-      //   )
-      // }
       case "text":
       case "number": {
         return (
@@ -94,28 +83,39 @@ class FormBuilder extends Component {
   };
 
   render = () => {
+    const { userBalance } = this.props;
     return (
-      <form
-        style={{
-          background: "rgba(0,0,0,0.3)",
-          padding: "40px",
-          width: "600px"
-        }}
-        onSubmit={this.handleSubmit}
-      >
-        {_.map(this.props.fields, field => this.getFields(field))}
+        <form
+          style={{
+            background: "rgba(0,0,0,0.3)",
+            padding: "40px",
+            width: "600px"
+          }}
+          onSubmit={this.handleSubmit}
+        >
+          <h4 style={{color: "white"}}> { this.props.title } </h4><br/>
+          <h5 style={{color: "white"}}> User balance: { userBalance  ? (`${userBalance} HUF`): "0 HUF" }</h5><br/>
 
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
+          {_.map(this.props.fields, field => this.getFields(field))}
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
     );
   };
 }
 
-const mapStateToProps = store => ({
-  
-});
+const mapStateToProps = store => {
+  const userBalance = store.userBalance.balance;
+  console.log("income:", store.userBalance.income);
+  console.log("expense:", store.userBalance.expense);
+  console.log("budget:", store.userBalance.budget);
+  console.log("debit:", store.userBalance.debit);
+  return {
+    userBalance
+  };
+};
+
 
 const mapDispatchToProps = {
   // dispatch actions

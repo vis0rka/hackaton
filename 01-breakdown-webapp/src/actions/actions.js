@@ -48,3 +48,7 @@ export const sendBudget = data => ({
   type: "SEND_BUDGET",
   data
 });
+
+export const userBudgetCounter = () => ({
+  type: "CALCULATE_USER_BUDGET",
+})

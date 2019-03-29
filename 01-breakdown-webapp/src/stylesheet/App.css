@@ -224,3 +224,17 @@ p, span {
   min-width: 50%;
   min-height: 50%;
 }
+
+.progressBar {
+  position: relative;
+  height: 8px;
+  width: 100%;
+  max-width: 250px;
+  border: 1px solid black;
+}
+
+.progressFiller {
+  background: rgb(18, 97, 18);
+  height: 100%;
+  transition: width .2s ease-in;
+}

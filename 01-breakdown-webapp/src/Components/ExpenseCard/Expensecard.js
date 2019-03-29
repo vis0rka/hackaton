@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactSVG from 'react-svg';
-import foodIcon from '../../images/food.svg'
 
 const Expensecard = ({category, amount, date}) => (
   <div className="card mb-4 shadow">

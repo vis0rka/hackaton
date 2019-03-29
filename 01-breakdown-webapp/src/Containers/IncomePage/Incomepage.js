@@ -11,7 +11,7 @@ class Incomepage extends Component {
   render() {
     return (
       <React.Fragment>
-         <Form fields={fields} handleSubmit={this.props.sendIncome} />
+         <Form fields={fields} handleSubmit={this.props.sendIncome} title={"INCOME"} />
       </React.Fragment>
     );
   }

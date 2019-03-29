@@ -20,21 +20,20 @@ const values = [
 ];
 
 const fields = [
-  // { type: "text", name: "description", placeholder: "Enter a description" },
-  { type: "number", name: "maxValue", placeholder: "Enter an amount", label: "Maximum amount / value :" },
   {
     type: "select",
     label: "Category",
     name: "category",
     items: values.map(value => ({ value: value, label: value }))
-  }
+  },
+  { type: "number", name: "maxValue", placeholder: "Enter an amount", label: "Maximum amount / value :", title: "BUDGET"},
 ];
 
 class Budgetpage extends Component {
   render() {
     return (
       <React.Fragment>
-        <Form fields={fields} handleSubmit={this.props.sendBudget} />
+        <Form fields={fields} handleSubmit={this.props.sendBudget} title={"BUDGET"}/>
       </React.Fragment>
     );
   }

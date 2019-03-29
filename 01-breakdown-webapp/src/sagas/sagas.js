@@ -69,7 +69,6 @@ function* login(action) {
 function* getUserInfo(action) {
   try {
     const response = yield call(API.postData, action.payload, 'http://localhost:4000/allaboutuser');
-    console.log(response)
     if (response.message) {
       yield put({
         type: 'GET_USER_INFO_FAILED',
@@ -94,7 +93,7 @@ function* saveDebit(action) {
     action.data.userId = '5c9ca6490650e135a4634b47';
     const debit = yield call(API.postData, action.data, 'http://localhost:4000/debit');
 
-    if (debit) {
+    if (!debit) {
       console.log(debit)
       // debit example: {_id: "5c9d55b95c90b7b2da0d6a6b", amount: 123, date: 1553814969096, __v: 0}
       yield put({
@@ -108,9 +107,9 @@ function* saveDebit(action) {
       });
      }
   } catch (error) {
-    // yield put({
-    //   type: 'SOMETHING WENT WRONG',
-    // });
+    yield put({
+      type: 'SOMETHING WENT WRONG',
+    });
     console.log(error); // eslint-disable-line
   }
 }
@@ -120,7 +119,7 @@ function* saveIncome(action) {
     action.data.userId = '5c9ca6490650e135a4634b47';
     const income = yield call(API.postData, action.data, 'http://localhost:4000/income');
     
-    if (income) {
+    if (!income) {
       console.log(income)
       // received income: {description: "kiscica", _id: "5c9d660f1d494ac8ecdd0939", amount: 12345, date: 1553819151626, __v: 0}
       yield put({
@@ -134,9 +133,9 @@ function* saveIncome(action) {
       });
      }
   } catch (error) {
-    // yield put({
-    //   type: 'SOMETHING WENT WRONG',,
-    // });
+    yield put({
+      type: 'SOMETHING WENT WRONG',
+    });
     console.log(error); // eslint-disable-line
   }
 }
@@ -146,7 +145,7 @@ function* saveExpense(action) {
     action.data.userId = '5c9ca6490650e135a4634b47';
     const expense = yield call(API.postData, action.data, 'http://localhost:4000/expenses');
     
-    if (expense) {
+    if (!expense) {
       console.log(expense)
       // received expense: {_id: "5c9d68e3dd9c8dc966d533b1", amount: 123, category: "car", date: 1553819875571, __v: 0}
       yield put({
@@ -160,9 +159,9 @@ function* saveExpense(action) {
       });
      }
   } catch (error) {
-    // yield put({
-    //   type: 'SOMETHING WENT WRONG',
-    // });
+    yield put({
+      type: 'SOMETHING WENT WRONG',
+    });
     console.log(error); // eslint-disable-line
   }
 }
@@ -172,7 +171,7 @@ function* saveBudget(action) {
     action.data.userId = '5c9ca6490650e135a4634b47';
     const budget = yield call(API.postData, action.data, 'http://localhost:4000/budget');
     
-    if (budget) {
+    if (!budget) {
       console.log(budget)
       // received budget: {_id: "5c9d6a81dd9c8dc966d533b2", maxValue: 12000, category: "clothes", __v: 0}
       yield put({
@@ -186,9 +185,9 @@ function* saveBudget(action) {
       });
      }
   } catch (error) {
-    // yield put({
-    //   type: 'SOMETHING WENT WRONG',
-    // });
+    yield put({
+      type: 'SOMETHING WENT WRONG',
+    });
     console.log(error); // eslint-disable-line
   }
 }

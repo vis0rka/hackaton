@@ -21,13 +21,13 @@ const values = [
 ];
 
 const fields = [
-  { type: "number", name: "amount", placeholder: "Enter an amount", label: "Amount" },
   {
     type: "select",
     label: "Category",
     name: "category",
     items: values.map(value => ({ value: value, label: value }))
-  }
+  },
+  { type: "number", name: "amount", placeholder: "Enter an amount", label:"Amount"  },
 ];
 class Expensepage extends Component {
 
