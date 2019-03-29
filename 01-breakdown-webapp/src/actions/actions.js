@@ -49,6 +49,11 @@ export const sendBudget = data => ({
   data
 });
 
+export const deleteExpense = data => ({
+  type: "DELETE_EXPENSE",
+  data
+})
+
 export const userBudgetCounter = () => ({
   type: "CALCULATE_USER_BUDGET",
 })

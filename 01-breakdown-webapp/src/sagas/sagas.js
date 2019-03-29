@@ -192,6 +192,32 @@ function* saveBudget(action) {
   }
 }
 
+function* deleteExpense(action) {
+  try {
+    action.data.userId = '5c9ca6490650e135a4634b47';
+    const expense = yield call(API.postData, action.data, 'http://localhost:4000/expenses');
+    
+    if (!expense) {
+      console.log(expense)
+      // received expense: {_id: "5c9d68e3dd9c8dc966d533b1", amount: 123, category: "car", date: 1553819875571, __v: 0}
+      yield put({
+        type: 'SAVE_EXPENSE_FAILED',
+        // payload: response.message,
+      });
+    } else {
+      yield put({
+        type: 'SAVE_EXPENSE_SUCCEEDED',
+        expense,
+      });
+     }
+  } catch (error) {
+    yield put({
+      type: 'SOMETHING WENT WRONG',
+    });
+    console.log(error); // eslint-disable-line
+  }
+}
+
 
 export default function* rootSaga() {
   yield takeEvery('HELLO_WORLD_REQUESTED', sayHelloSaga);
@@ -203,4 +229,5 @@ export default function* rootSaga() {
   yield takeEvery('SEND_INCOME', saveIncome);
   yield takeEvery('SEND_EXPENSE', saveExpense);
   yield takeEvery('SEND_BUDGET', saveBudget);
+  yield takeEvery('DELETE_EXPENSE', deleteExpense);
 }

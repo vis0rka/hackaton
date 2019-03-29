@@ -1,0 +1,36 @@
+.card-wrapper .card {
+  background-color: rgba(190, 190, 190, 0.4);
+  margin-bottom: 1rem;
+  width: 13rem; 
+  height: 15rem; 
+}
+.card-wrapper .card img {
+  height: 5rem;
+  width: 6.5rem;
+  margin-left: 3.25rem;
+}
+
+.card-wrapper .card-body {
+  text-align: center;
+  height: 9rem;
+}
+.card-wrapper .card-text {
+  text-align: center;
+} */
+.card-wrapper button {
+  border: none;
+  text-decoration: none;
+  margin-left: 3%;
+}
+
+
+.card-wrapper .fa-edit{
+  background: #FFC107;
+  border: 1px solid #FFC107;
+}
+
+.card-wrapper .fa-trash-alt {
+  background: #DC3545;
+  border: 1px solid #DC3545;
+}
+
