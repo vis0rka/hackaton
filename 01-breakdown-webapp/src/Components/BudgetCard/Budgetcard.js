@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Expensecard = ({category, amount, date}) => (
+const Budgetcard = ({category, amount, date}) => (
   <div className="card mb-4 shadow">
     <div className="card-header d-flex align-items-center justify-content-between">
       <img className="icons" src={`http://borbandibarkacs.hu/wp-content/uploads/2019/hackaton/${category}.svg`}/> 
@@ -15,4 +15,4 @@ const Expensecard = ({category, amount, date}) => (
   </div>
 );
 
-export default Expensecard;
+export default Budgetcard;
