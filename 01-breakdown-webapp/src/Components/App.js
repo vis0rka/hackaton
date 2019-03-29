@@ -5,9 +5,9 @@ import '../stylesheet/App.css';
 import LandingPage from '../Containers/LandingPage/LandingPage';
 import MainPage from '../Containers/MainPage/MainPage';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHome, faMoneyBill, faWallet, faAlignLeft, faHandHoldingUsd, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faMoneyBill, faWallet, faAlignLeft, faHandHoldingUsd, faSignOutAlt, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faHome, faMoneyBill, faWallet, faAlignLeft, faHandHoldingUsd, faSignOutAlt);
+library.add(faHome, faMoneyBill, faWallet, faAlignLeft, faHandHoldingUsd, faSignOutAlt, faEdit, faTrashAlt);
 
 const App = () => (
   <Switch>

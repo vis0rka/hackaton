@@ -114,7 +114,7 @@ class FormBuilder extends Component {
 }
 
 const mapStateToProps = store => ({
-  // connect to store?
+  
 });
 
 const mapDispatchToProps = {

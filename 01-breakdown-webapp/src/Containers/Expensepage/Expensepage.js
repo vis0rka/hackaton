@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Form from "../../Components/FormBuilder";
-import {sendExpense} from "../../actions/actions";
-import Card from '../../Components/Card/card';
+import { sendExpense } from "../../actions/actions";
+import Cardlist from '../../Components/Card/cardlist';
 
 const values = [
   "accomodation",
@@ -21,10 +21,10 @@ const values = [
 ];
 
 const fields = [
-  { type: "number", name: "amount", placeholder: "Enter an amount", label:"Amount"  },
+  { type: "number", name: "amount", placeholder: "Enter an amount", label: "Amount" },
   {
     type: "select",
-    label:"Category",
+    label: "Category",
     name: "category",
     items: values.map(value => ({ value: value, label: value }))
   }
@@ -34,11 +34,11 @@ class Expensepage extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="col-md-8">
-        <Form fields={fields} handleSubmit={this.props.sendExpense} />
+        <div className="col-sm-10">
+          <Form fields={fields} handleSubmit={this.props.sendExpense} />
         </div>
-        <div className="col-md-4">
-          
+        <div className="col-sm-1">
+          <Cardlist />
         </div>
       </React.Fragment>
     );
