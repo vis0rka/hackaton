@@ -25,7 +25,7 @@ router.put("/debit", debitController.putDebit);
 
 router.delete("/debit", debitController.deleteDebit);
 
-router.get("/allaboutuser", userController.getAllAboutUser);
+router.post("/allaboutuser", userController.getAllAboutUser);
 
 router.post("/budget", budgetController.postBudget);
 

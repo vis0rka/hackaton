@@ -69,7 +69,6 @@ function* login(action) {
 function* getUserInfo(action) {
   try {
     const response = yield call(API.postData, action.payload, 'http://localhost:4000/allaboutuser');
-    console.log(response)
     if (response.message) {
       yield put({
         type: 'GET_USER_INFO_FAILED',

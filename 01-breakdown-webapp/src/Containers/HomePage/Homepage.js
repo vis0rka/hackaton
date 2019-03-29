@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Loading from '../../Components/Loading/Loading';
 import { connect } from 'react-redux';
-import { getAllUserInfo } from '../../actions/actions';
+import { getAllUserInfo, userBudgetCounter } from '../../actions/actions';
 import Expensecard from '../../Components/ExpenseCard/Expensecard';
+import Budgetcard from '../../Components/BudgetCard/Budgetcard';
 
 class Homepage extends Component {
 
   componentDidMount = () => {
     this.props.getAllUserInfo("5c9ca6490650e135a4634b47");
-    console.log(this.sevenDaysBefore());
   }
 
   handleClick = () => {
@@ -35,6 +35,8 @@ class Homepage extends Component {
     console.log(sevenDays)
     return sevenDays;
   }
+
+
 
   returnTimefromDate = date => (new Date(date).toLocaleDateString());
 
@@ -77,6 +79,8 @@ class Homepage extends Component {
                               category={element.category}
                               amount={element.amount}
                               date={this.returnTimefromDate(element.date)}
+                              key={element._id}
+
                             />
                           )
                         })
@@ -92,6 +96,17 @@ class Homepage extends Component {
                 </div>
                 <div className="d-flex">
                   <div className="card-body">
+                    {console.log(this.props.userBudget)}
+                    {this.props.userBudget.map(element => {
+                      return (
+                        <Budgetcard
+                          category={element.category}
+                          key={element.id}
+                          percentage={(element.balance / element.maxValue * 100)}
+                          balance={element.balance}
+                        />
+                      )
+                    })}
                   </div>
                 </div>
               </div>
@@ -114,6 +129,7 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = {
   getAllUserInfo,
+  userBudgetCounter,
 };
 
 export default connect(
