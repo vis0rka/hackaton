@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Form from "../../Components/FormBuilder";
 import {sendDebitData} from "../../actions/actions";
+import DatePicker from "react-datepicker";
 
 const fields = [
   // { type: "text", name: "description", placeholder: "Enter a description" },
-  { type: "number", name: "amount", placeholder: "Enter an amount" }
+  { type: "number", name: "amount", placeholder: "Enter an amount", label:"Amount" },
+  // { type: "date"}
 ];
 class Debitpage extends Component {
   render() {

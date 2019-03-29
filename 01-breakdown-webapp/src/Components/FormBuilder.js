@@ -6,14 +6,17 @@ class FormBuilder extends Component {
   state = { values: {} };
 
   getFields = (field, value) => {
-    const { type, name, placeholder, items } = field;
+    const { type, name, placeholder, items, label } = field;
     switch (type) {
       // case "date":{
       //   return (
-      //     <DatePicker
-      //       dateFormat="yyyy/MM/dd"
-      //       selected={new Date()}
-      //       onChange={this.handleChange} />
+      //     <div>
+      //       <DatePicker
+      //         dateFormat="yyyy/MM/dd"
+      //         selected={new Date()}
+      //         onChange={this.handleChange}   
+      //       />
+      //     </div>
       //   )
       // }
       case "text":
@@ -21,7 +24,7 @@ class FormBuilder extends Component {
         return (
           <div className="form-group" key={name}>
             <label htmlFor={name.toLowerCase()} style={{ color: "white" }}>
-              {name}
+              {label}
             </label>
             <input
               onChange={event => {
@@ -42,7 +45,7 @@ class FormBuilder extends Component {
         return (
           <React.Fragment key={name}>
             <label htmlFor="amount" style={{ color: "white" }}>
-              {name}
+              {label}
             </label>
             <div className="input-group mb-3">
               <select

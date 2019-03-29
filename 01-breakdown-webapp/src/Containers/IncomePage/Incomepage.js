@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Form from "../../Components/FormBuilder";
 
 const fields = [
-  { type: "text", name: "Description", placeholder: "Enter a description" },
-  { type: "number", name: "Amount", placeholder: "Enter an amount" }
+  { type: "text", name: "description", placeholder: "Enter a description", label:"Description"  },
+  { type: "number", name: "amount", placeholder: "Enter an amount", label:"Amount" }
 ];
 class Incomepage extends Component {
   render() {
