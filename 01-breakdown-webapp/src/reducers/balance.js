@@ -12,6 +12,7 @@ const userBalance = (
     debit: [],
     sumIncome: null,
     sumExpense: null,
+    sumDebit: null,
     balance: null,
   },
   action
@@ -41,6 +42,9 @@ const userBalance = (
           return sum + item.amount;
         }, 0),
         sumExpense: action.payload.expense.reduce(function (sum, item) {
+          return sum + item.amount;
+        }, 0),
+        sumDebit: action.payload.debit.reduce(function (sum, item) {
           return sum + item.amount;
         }, 0),
       };

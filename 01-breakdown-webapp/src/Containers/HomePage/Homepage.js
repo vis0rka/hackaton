@@ -4,16 +4,13 @@ import { connect } from 'react-redux';
 import { getAllUserInfo, userBudgetCounter } from '../../actions/actions';
 import Expensecard from '../../Components/ExpenseCard/Expensecard';
 import Budgetcard from '../../Components/BudgetCard/Budgetcard';
+import PieChart from 'react-minimal-pie-chart';
+require('./homepage.css');
 
 class Homepage extends Component {
 
   componentDidMount = () => {
     this.props.getAllUserInfo("5c9ca6490650e135a4634b47");
-  }
-
-  handleClick = () => {
-    const { userIncome } = this.props;
-    console.log(this.props.userSumIncome)
   }
 
   dateMonth = () => {
@@ -32,8 +29,17 @@ class Homepage extends Component {
   sevenDaysBefore = () => {
     const d = Date.now();
     const sevenDays = d - (7 * 24 * 60 * 60 * 1000);
-    console.log(sevenDays)
     return sevenDays;
+  }
+
+  pieCalculator = () => {
+    const sumExpense = this.props.userSumExpense + this.props.userSumDebit
+    const ratio = Math.floor((sumExpense / this.props.userSumIncome) * 100)
+    console.log(ratio)
+    return  {
+      income: (100 - ratio),
+      ratio: ratio
+    }
   }
 
 
@@ -54,9 +60,34 @@ class Homepage extends Component {
                   <div className="card-body">
                     <h5 className="card-title">{this.dateMonth()}</h5>
                     <hr />
-                    <h6>Incomes: </h6><h6 className="text-success d-inline">{this.props.userSumIncome} Ft</h6>
-                    <h6>Expenses: </h6><h6 className="text-danger d-inline">{this.props.userSumExpense} Ft</h6>
-                    <h6>Summary: </h6><h6 className="font-weight-bold d-inline">{this.props.userSumIncome - this.props.userSumExpense} Ft</h6>
+                    <div className="d-flex">
+                      <div className="d-flex flex-column">
+                        <div className="mt-2">
+                          <h6 className="d-inline mt-2">Incomes: </h6><h6 className="text-success d-inline">{this.props.userSumIncome} HUF</h6>
+                        </div>
+                        <div className="mt-2">
+                          <h6 className="d-inline mt-2">Expenses: </h6><h6 className="text-danger d-inline">{this.props.userSumExpense} HUF</h6>
+                        </div>
+                        <div className="mt-2">
+                          <h6 className="d-inline mt-2">Debits: </h6><h6 className="text-danger d-inline">{this.props.userSumDebit} HUF</h6>
+                        </div>
+
+                      </div>
+                      <div className="d-flex alig-items-center justify-content-center">
+                        <PieChart
+                          data={[
+                            { title: 'One', value: this.pieCalculator().income, color: '#4c8c4a' },
+                            { title: 'Two', value: this.pieCalculator().ratio, color: '#C13C37' },
+                          ]}
+                          style={{ height: '120px' }}
+                        />
+                        <div className="d-flex align-items-center justify-content-center left-margin-minus">
+                          <span>
+                        <h6 className="d-inline mt-2">Balance: </h6><h6 className="font-weight-bold d-inline">{this.props.userSumIncome - (this.props.userSumExpense + this.props.userSumDebit)} HUF</h6>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -96,7 +127,6 @@ class Homepage extends Component {
                 </div>
                 <div className="d-flex">
                   <div className="card-body">
-                    {console.log(this.props.userBudget)}
                     {this.props.userBudget.map(element => {
                       return (
                         <Budgetcard
@@ -112,7 +142,7 @@ class Homepage extends Component {
               </div>
             </div>
           </div>
-        </div>
+        </div >
     )
   }
 }
@@ -125,6 +155,7 @@ const mapStateToProps = store => ({
   userDebit: store.userBalance.debit,
   userSumIncome: store.userBalance.sumIncome,
   userSumExpense: store.userBalance.sumExpense,
+  userSumDebit: store.userBalance.sumDebit,
 });
 
 const mapDispatchToProps = {
