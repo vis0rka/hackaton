@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Form from "../../Components/FormBuilder";
+import {sendBudget} from "../../actions/actions";
 
 const values = [
   "accomodation",
@@ -19,7 +21,7 @@ const values = [
 
 const fields = [
   // { type: "text", name: "description", placeholder: "Enter a description" },
-  { type: "number", name: "amount", placeholder: "Enter an amount", label: "Amount" },
+  { type: "number", name: "maxValue", placeholder: "Enter an amount", label: "Maximum amount / value :" },
   {
     type: "select",
     label: "Category",
@@ -32,10 +34,21 @@ class Budgetpage extends Component {
   render() {
     return (
       <React.Fragment>
-        <Form fields={fields} />
+        <Form fields={fields} handleSubmit={this.props.sendBudget} />
       </React.Fragment>
     );
   }
 }
 
-export default Budgetpage;
+const mapStateToProps = store => ({
+  // connect to store?
+});
+
+const mapDispatchToProps = {
+  sendBudget
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Budgetpage);
